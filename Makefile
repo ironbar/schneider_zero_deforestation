@@ -32,3 +32,6 @@ serve-docs:
 deploy-docs:
 	git push
 	mkdocs gh-deploy
+
+update-docs-readme:
+	cp README.md docs/README.md

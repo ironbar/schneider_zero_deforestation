@@ -1,8 +1,10 @@
-# zero_deforestation
+# Schneider's Zero Deforestation Hackaton
+
+![Cambodia deforestation](https://imgs.mongabay.com/wp-content/uploads/sites/20/2017/01/13151931/0113-rubber-progression.png)
 
 Predict deforestation on satellite images
 
-https://nuwe.io/dev/challenges/data-science-se-european
+[https://nuwe.io/dev/challenges/data-science-se-european](https://nuwe.io/dev/challenges/data-science-se-european)
 
 ## Docs
 
