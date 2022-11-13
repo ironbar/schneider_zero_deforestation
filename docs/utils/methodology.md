@@ -2,7 +2,7 @@
 
 I'm following [CRISP-DM 1.0](https://www.the-modeling-agency.com/crisp-dm.pdf) methodology for the reports.
 
-I have skipped Evaluation and Deployment steps because they are not usually done on Kaggle.
+I have skipped Evaluation and Deployment steps because they are not usually done on challenges.
 
 1. [Business understanding](../01_Business_Understanding.md)
 1. [Data understanding](../02_Data_Understanding.md)

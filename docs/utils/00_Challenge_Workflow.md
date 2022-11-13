@@ -20,8 +20,7 @@ make env-export
 7. Create a github repo to have a backup of the data. Vscode allows to do it directly without having to go to the website, choose a private repo. At the end of the challenge it will be made public.
 8. Use TDD methodology whenever possible, this will save time because errors
 won't be propagated along the challenge.
-9. Have an apprentice attitude, collaborate on the forum, I have a lot to learn
-from Kaggle.
+9. Have an apprentice attitude and collaborate on the forum.
 10. Add a nice picture to README
 
 ## End of the challenge
