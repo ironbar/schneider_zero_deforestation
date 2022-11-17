@@ -76,7 +76,7 @@ the data analysis goal and project plan
 ### Timeline
 
 The challenge starts ad 09:00 on November 19th 2022. It ends on 23:59 of the same day. There is some mentoring time along the day. So excluding mentoring time, lunch
-time there are around 10 hours to do the challenge.
+time, ... there are around 10 hours to do the challenge.
 
 The timeline is really short compared to typical challenges. Probably the key to
 do well in this challenge is the preparation. There is already information about
