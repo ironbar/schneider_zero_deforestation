@@ -35,6 +35,8 @@ On the Kaggle competition all the teams used pretrained models: [overfitting des
 
 [Multi-Label Classification of Satellite Photos of the Amazon Rainforest](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-satellite-photos-of-the-amazon-rainforest/) Here also pretrained models on Imagenet are used.
 
+[Keras models pretrained on Imagenet](https://keras.io/api/applications/)
+
 ### Big Transfer (BiT)
 
 [https://github.com/google-research/big_transfer](https://github.com/google-research/big_transfer)
@@ -45,11 +47,27 @@ On the Kaggle competition all the teams used pretrained models: [overfitting des
 I have already used this models for other competitions. I should have a look at the fine-tuning
 code and test it if possible before the challenge.
 
+### Specific satellite image pretrained models
+
+Let's try to find models that were trained on satellite image data.
+
+- [Tensorflow Hub Remote sensing](https://tfhub.dev/google/collections/remote_sensing/1) This collection contains models that were pre-trained for the remote sensing domain concentrating on satellite and airborne imagery.
+ These models provide representations for transfer learning on custom datasets. All parameters in the modules are trainable, and fine-tuning all parameters is the recommended practice.
+- Did not find anything relevant on [HuggingFace](https://huggingface.co/)
+- [An Empirical Study of Remote Sensing Pretraining](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Remote-Sensing/tree/main/Scene%20Recognition) This pytorch models are pretrained on MillionAID. Million-AID is a large-scale benchmark dataset containing a million instances for remote sensing scene classification. However this pretraining does not seem to give an advantage over Imagenet pretraining.
+
 ### Useful resources
 
 - [https://github.com/robmarkcole/satellite-image-deep-learning](https://github.com/robmarkcole/satellite-image-deep-learning) This repository lists resources on the topic of deep learning applied to satellite and aerial imagery.
 
 - [Kaggle's Planet: Understanding the Amazon from Space](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
+
+### Summary
+
+If the data for the channel are standard RGB images we have 4 different families of pretrained models
+to create a powerful ensemble:
+
+![summary_model_families](res/summary_model_families.png)
 
 ## Generate test design
 
