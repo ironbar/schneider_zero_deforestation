@@ -14,14 +14,42 @@ of satellite image classification. Then I will build an ensemble using those mod
 In this section I'm going to gather information about the possible models that we
 could use.
 
-### LAION Openclip
+### LAION OpenClip
 
 To my knowledge this is the biggest pretrained model that is available today. It has
 a [github repo](https://github.com/mlfoundations/open_clip) where it is shown how
 to use the model for zero-shot classification and another repo where it shows one
 way to [fine-tune](https://github.com/mlfoundations/wise-ft)
 
+- I should try the fine-tuning but I could also try to train a logistic regression
+model on top of OpenClip.
+- There are multiple versions of OpenClip that I could try for the ensemble
+
+### Models pretrained on Imagenet
+
+[Detecting deforestation from satellite images](https://towardsdatascience.com/detecting-deforestation-from-satellite-images-7aa6dfbd9f61) In this post they use a simple ResNet50 and
+get similar results to the Kaggle competition. They do not say it explicitly but it is very likely
+the ResNet was pretrained on Imagenet.
+
+On the Kaggle competition all the teams used pretrained models: [overfitting describing its models](https://www.kaggle.com/competitions/planet-understanding-the-amazon-from-space/discussion/31862#200237)
+
+[Multi-Label Classification of Satellite Photos of the Amazon Rainforest](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-satellite-photos-of-the-amazon-rainforest/) Here also pretrained models on Imagenet are used.
+
+### Big Transfer (BiT)
+
+[https://github.com/google-research/big_transfer](https://github.com/google-research/big_transfer)
+
+> In this repository we release multiple models from the Big Transfer (BiT): General Visual Representation Learning paper that were pre-trained on the ILSVRC-2012 and ImageNet-21k datasets. We provide the code to fine-tuning the released models in the major deep learning frameworks TensorFlow 2, PyTorch and Jax/Flax.
+> We hope that the computer vision community will benefit by employing more powerful ImageNet-21k pretrained models as opposed to conventional models pre-trained on the ILSVRC-2012 dataset.
+
+I have already used this models for other competitions. I should have a look at the fine-tuning
+code and test it if possible before the challenge.
+
 ### Useful resources
+
+- [https://github.com/robmarkcole/satellite-image-deep-learning](https://github.com/robmarkcole/satellite-image-deep-learning) This repository lists resources on the topic of deep learning applied to satellite and aerial imagery.
+
+- [Kaggle's Planet: Understanding the Amazon from Space](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
 
 ## Generate test design
 
