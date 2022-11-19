@@ -16,7 +16,6 @@ from sklearn.model_selection import train_test_split
 
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import preprocess_input, ResNet50
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow_addons.metrics import F1Score
@@ -26,19 +25,29 @@ def main(args=None):
     if args is None:
         args = sys.argv[1:]
     args = parse_args(args)
-    train_data, val_data, x_test, ohe = load_data(args.data_path)
-    model, base_model = create_model()
+    backbone, preprocess_data = get_backbone_and_preprocess_data_function(args.architecture)
+    train_data, val_data, x_test, ohe = load_data(args.data_path, preprocess_data)
+    model, base_model = create_model(backbone)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=False)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=True)
 
 
-def load_data(data_path):
+def get_backbone_and_preprocess_data_function(architecture):
+    if architecture == 'ResNet50':
+        from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
+        return ResNet50, preprocess_input
+    else:
+        raise NotImplementedError(f'{architecture} architecture is not implemented')
+
+
+
+def load_data(data_path, preprocess_input):
     train_df = _load_dataframe(data_path, 'train.csv')
     test_df = _load_dataframe(data_path, 'test.csv')
     train_imgs = _load_imgs(train_df.example_path)
     test_imgs = _load_imgs(test_df.example_path)
-    inputs = _preprocess_inputs(train_imgs)
-    x_test = _preprocess_inputs(test_imgs)
+    inputs = _preprocess_inputs(train_imgs, preprocess_input)
+    x_test = _preprocess_inputs(test_imgs, preprocess_input)
 
     ohe = OneHotEncoder(sparse=False)
     ohe_labels = ohe.fit_transform(np.expand_dims(np.array(train_df.label), 1))
@@ -60,13 +69,13 @@ def _load_imgs(image_filepaths, img_side=224):
             for image_filepath in tqdm(image_filepaths)]
     return imgs
 
-def _preprocess_inputs(imgs):
+def _preprocess_inputs(imgs, preprocess_input):
     inputs = np.array([preprocess_input(image.img_to_array(img)) for img in tqdm(imgs)],
                        dtype=np.float32)
     return inputs
 
 
-def create_model(n_categories=3, img_side=224):
+def create_model(backbone, n_categories=3, img_side=224):
     img_augmentation = Sequential(
         [
             keras.layers.RandomRotation(factor=0.08),
@@ -75,7 +84,7 @@ def create_model(n_categories=3, img_side=224):
         name="img_augmentation",
     )
     inputs = keras.layers.Input(shape=(img_side, img_side, 3))
-    base_model = ResNet50(weights='imagenet', include_top=False)
+    base_model = backbone(weights='imagenet', include_top=False)
     outputs = img_augmentation(inputs)
     outputs = base_model(outputs, training=False)
     outputs = GlobalAveragePooling2D()(outputs)
@@ -115,6 +124,8 @@ def parse_args(args):
         epilog=epilog)
     parser.add_argument('--data_path', help='Path to folder with the data',
                         default='/mnt/hdd0/Kaggle/schneider_deforestation/data')
+    parser.add_argument('--architecture', help='Name of the model architecture to use',
+                        default='ResNet50')
     return parser.parse_args(args)
 
 
