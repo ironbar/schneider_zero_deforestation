@@ -11,4 +11,6 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
 
 ## n.3 Results
 
-## n.4 Next steps
+## n.4 Summary
+
+## n.5 Next steps
