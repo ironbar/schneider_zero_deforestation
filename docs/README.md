@@ -18,6 +18,12 @@ As required by the challenge the solution has 3 files:
 - `predictions.json`
 - `presentation.pdf`
 
+An ensemble of the best 13 fine-tuned models comprising of:
+
+- OpenClip models pretrained on LAION dataset (ViT-B-16-plus-240, ViT-B-32, ViT-L-14, ViT-H-14, ViT-g-14, ViT-B-16) 
+- Keras models pretrained on Imagenet (ResNet50, ResNet50V2, MobileNetV2)
+- Achieves a validation f1 score of 0.754
+
 ## Code structure
 
      |_ docs: documents made during the challenge according to CRISP-DM methodology
