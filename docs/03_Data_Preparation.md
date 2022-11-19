@@ -10,6 +10,8 @@ volume or data types. Note that data selection covers selection of attributes
 (columns) as well as selection of records (rows) in a table.
 List the data to be included/excluded and the reasons for these decisions.--->
 
+All the available data will be used for this challenge.
+
 ## Clean Data
 
 <!---Raise the data quality to the level required by the selected analysis techniques.
@@ -20,19 +22,15 @@ quality problems reported during the Verify Data Quality task of the Data
 Understanding phase. Transformations of the data for cleaning purposes and the
 possible impact on the analysis results should be considered. --->
 
+There is no time to clean the data. Since the dataset is very small I will assume that the data is clean.
+
 ## Construct Data
 
 <!---This task includes constructive data preparation operations such as the
 production of derived attributes or entire new records, or transformed values
 for existing attributes. --->
 
-## Integrate Data
+I will only use the images for training the model.
 
-<!---These are methods whereby information is combined from multiple tables or
-records to create new recordsor values. --->
-
-## Format Data
-
-<!---Formatting transformations refer to primarily syntactic modifications made
-to the data that do not change its meaning, but might be required by the
-modeling tool. --->
+Since my plan is to use different pretrained models I will have to do different preprocessing for
+each of them.
