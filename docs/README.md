@@ -10,6 +10,14 @@ Predict deforestation on satellite images
 
 Enjoy the documentation of the project created with MkDocs at [https://ironbar.github.io/schneider_zero_deforestation/](https://ironbar.github.io/schneider_zero_deforestation/)
 
+## Solution
+
+As required by the challenge the solution has 3 files:
+
+- `main.sh`
+- `predictions.json`
+- `presentation.pdf`
+
 ## Code structure
 
      |_ docs: documents made during the challenge according to CRISP-DM methodology
