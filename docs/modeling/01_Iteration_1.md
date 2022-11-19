@@ -48,6 +48,8 @@ way we could have mean value and uncertainty for each option.
 ## 1.3 Results
 
 I have run 6 experiments for each option to be able to estimate the mean f1 score and the uncertainty.
+All results are validation scores. I'm using 20% of the training data for validation, always with
+the same seed.
 
 ### 1.3.1 Does contrast increase improve the results?
 
@@ -90,5 +92,21 @@ in the row with no dropout.
 There are no significative differences between all the experiments with dropout. Thus I won't be using it.
 
 ### 1.3.4 Class balance
+
+On this experiments I have set the average of the f1 score to macro because it has been said on discord.
+Thus I have repeated the baseline results with the macro average.
+
+Since the 3 categories are unbalanced I'm going to create a generator to balance them and see how
+that affects to the validation score.
+
+| experiment         | mean f1 score | uncertainty |
+|--------------------|---------------|-------------|
+| unbalanced dataset | 0.709         | 0.008       |
+| balanced generator | 0.710         | 0.007       |
+
+There is no statistically significant difference between the two experiments. For simplicity I will
+be training on the unbalanced dataset.
+
+Also there was no big difference with previous experiments that were not using f1 macro average.
 
 ## 1.4 Next steps
