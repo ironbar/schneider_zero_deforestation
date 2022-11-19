@@ -5,45 +5,22 @@ The work is done using short iterations. Each iteration needs to have a very
 clear goal. This allows to gain greater knowledge of the problem on each iteration.
 --->
 
-## n.1 Goal
+## 4.1 Goal
 
-## n.2 Development
+We have the predictions from the previous iterations and we have to combine them to create the final solution.
 
-## n.3 Results
+## 4.2 Development
+
+Since there is little remaining time I'm going to follow a greedy strategy for choosing the models
+of the ensemble. I will be using the top n best models.
+
+## 4.3 Results
+
+I don't have too much confident on the best model, the difference with the others is suspicious.
+Thus I prefer to use more models at the cost of a lower validation score with the hope that the
+ensemble will generalize better to the test set.
 
 ```bash
-Single model scores:
-     score                              name
-0   0.7837   ViT-B-16-plus-240_laion400m_e32
-1   0.7430        ViT-B-32_laion2b_s34b_b79k
-2   0.7391                      ResNet50V2_2
-3   0.7335        ViT-L-14_laion2b_s32b_b82k
-4   0.7325            ViT-L-14_laion400m_e32
-5   0.7281                        ResNet50_1
-6   0.7248        ViT-H-14_laion2b_s32b_b79k
-7   0.7245                   ViT-B-16_openai
-8   0.7224        ViT-g-14_laion2b_s12b_b42k
-9   0.7215                      ResNet50V2_0
-10  0.7193            ViT-B-16_laion400m_e32
-11  0.7162                        ResNet50_2
-12  0.7154                     MobileNetV2_2
-13  0.7152         ViT-B-32-quickgelu_openai
-14  0.7149                        Xception_0
-15  0.7084                   ViT-L-14_openai
-16  0.7063                        ResNet50_0
-17  0.7061                EfficientNetV2B0_0
-18  0.7018                        Xception_1
-19  0.6966  ViT-B-32-quickgelu_laion400m_e32
-20  0.6950                      ResNet50V2_1
-21  0.6922                EfficientNetV2B3_2
-22  0.6889                        Xception_2
-23  0.6878                EfficientNetV2B3_1
-24  0.6871                     MobileNetV2_0
-25  0.6837                     MobileNetV2_1
-26  0.6820                EfficientNetV2B0_2
-27  0.6800                EfficientNetV2B0_1
-28  0.6740                EfficientNetV2B3_0
-
 Score of the ensemble depending on the number of models used:
 1 models Val ensemble score:0.783743
 2 models Val ensemble score:0.768413
@@ -76,6 +53,31 @@ Score of the ensemble depending on the number of models used:
 29 models Val ensemble score:0.723910
 ```
 
-## n.4 Summary
+I have decided to use the top 13 models. This results on a ensemble with a validation score of 0.754
+This ensemble combines both Openclip models and keras pretrained models.
 
-## n.5 Next steps
+```bash
+Single model scores:
+     score                              name
+0   0.7837   ViT-B-16-plus-240_laion400m_e32
+1   0.7430        ViT-B-32_laion2b_s34b_b79k
+2   0.7391                      ResNet50V2_2
+3   0.7335        ViT-L-14_laion2b_s32b_b82k
+4   0.7325            ViT-L-14_laion400m_e32
+5   0.7281                        ResNet50_1
+6   0.7248        ViT-H-14_laion2b_s32b_b79k
+7   0.7245                   ViT-B-16_openai
+8   0.7224        ViT-g-14_laion2b_s12b_b42k
+9   0.7215                      ResNet50V2_0
+10  0.7193            ViT-B-16_laion400m_e32
+11  0.7162                        ResNet50_2
+12  0.7154                     MobileNetV2_2
+```
+
+## 4.4 Summary
+
+We have prepared an ensemble of models that we will use to make the final predictions.
+
+## 4.5 Next steps
+
+Prepare the documentation for the challenge.
