@@ -8,7 +8,7 @@ Predict deforestation on satellite images
 
 ## Docs
 
-[https://ironbar.github.io/zero_deforestation](https://ironbar.github.io/zero_deforestation)
+Enjoy the documentation of the project created with MkDocs at [https://ironbar.github.io/zero_deforestation](https://ironbar.github.io/zero_deforestation)
 
 ## Code structure
 
