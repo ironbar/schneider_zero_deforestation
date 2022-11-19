@@ -12,13 +12,8 @@ Enjoy the documentation of the project created with MkDocs at [https://ironbar.g
 
 ## Code structure
 
-     |_ barbol: library with code developed for the challenge
-     |_ forum: all the scripts and notebooks taken from the forum
-     |_ logs: folder for storing all kind of stats and logs. For example the
-     score of each model, results from experiments
+     |_ docs: documents made during the challenge according to CRISP-DM methodology
+     |_ models: predictions and models trained for the challenge
      |_ notebooks: jupyter notebooks made during the challenge. They start by number for easier sorting.
-     |_ reports: documents made during the challenge according to CRISP-DM methodology
-     |_ tests: folder with tests for the library
-     |_ data: folder with light data from teh challenge
      |_ rules: the official rules of the challenge
      |_ scripts: scripts made during the challenge for training, data processing...
