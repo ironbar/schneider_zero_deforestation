@@ -31,12 +31,13 @@ I will start with Keras that should be the easier implementation.
 ```bash
 conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
-pip install tensorflow
+pip install tensorflow==2.10
 python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 ```
 
 I had to delete and create the environment from zero because tensorflow is not ready
-for python 3.11.
+for python 3.11. Also I had to downgrade tensorflow from `2.11` to `2.10` because
+GPU was not working.
 
 #### 1.2.2.2 Install other dependencies
 
