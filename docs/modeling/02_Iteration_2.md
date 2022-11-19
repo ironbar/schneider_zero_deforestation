@@ -30,4 +30,8 @@ extend the code that I had for ResNet50 to work with other architectures with mi
 
 ## 2.4 Summary
 
+We have trained different architecture that we could ensemble later.
+
 ## 2.5 Next steps
+
+Try OpenClip models.
