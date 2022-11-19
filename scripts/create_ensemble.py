@@ -15,10 +15,9 @@ def main(args=None):
     val_labels = get_val_labels(args.data_path)
     val_preds, test_preds, names = load_preds(args.predictions_dir)
     print(len(val_preds), len(test_preds), len(names))
-    print_preds_scores(val_preds, val_labels, names)
-
-    ensemble_pred = np.mean(test_preds, axis=0)
-    ensemble_pred = np.argmax(ensemble_pred, axis=1)
+    val_scores = get_single_model_scores(val_preds, val_labels, names)
+    ensemble_pred = create_ensemble(
+        val_preds, val_labels, val_scores, test_preds, args.best_n_models)
     df = pd.DataFrame({'target': ensemble_pred})
     df.to_json('predictions.json')
 
@@ -39,14 +38,37 @@ def load_preds(predictions_dir):
     return val_preds, test_preds, names
 
 
-def print_preds_scores(val_preds, val_labels, names):
+def get_single_model_scores(val_preds, val_labels, names):
     scores = [_get_f1_score(val_labels, val_pred) for val_pred in val_preds]
     print('Single model scores:')
     print(pd.DataFrame({'score': scores, 'name': names}).sort_values('score', ascending=False).reset_index(drop=True))
+    return scores
+
 
 def _get_f1_score(val_labels, val_preds):
     return round(f1_score(val_labels, np.argmax(val_preds, axis=1), average='macro'), 4)
 
+
+def create_ensemble(val_preds, val_labels, val_scores, test_preds, best_n_models):
+    print('\nScore of the ensemble depending on the number of models used:')
+    for idx in range(1, 30):
+        weights = np.ones(len(val_scores))
+        weights[np.argsort(val_scores)[:-idx]] = 0.0
+        val_ensemble = ensemble_predictions(val_preds, weights)
+        print(f'{idx} models Val ensemble score:{f1_score(val_labels, val_ensemble, average="macro"):4f}')
+
+    print('Selected:')
+    weights = np.ones(len(val_scores))
+    weights[np.argsort(val_scores)[:-best_n_models]] = 0.0
+    val_ensemble = ensemble_predictions(val_preds, weights)
+    print(f'{best_n_models} models Val ensemble score:{f1_score(val_labels, val_ensemble, average="macro"):4f}')
+    test_ensemble = ensemble_predictions(test_preds, weights)
+    return test_ensemble
+
+
+def ensemble_predictions(preds, weights):
+    weights = np.expand_dims(np.expand_dims(weights, axis=1), axis=2)
+    return np.argmax(np.mean(weights*preds, axis=0), axis=1)
 
 
 def parse_args(args):
@@ -62,6 +84,8 @@ def parse_args(args):
                         default='/mnt/hdd0/Kaggle/schneider_deforestation/data')
     parser.add_argument('--predictions_dir', help='Path to folder with the predictions',
                         default='models')
+    parser.add_argument('--best_n_models', help='Number of best models to use for ensemble',
+                        default='best_n_models', type=int)
     return parser.parse_args(args)
 
 

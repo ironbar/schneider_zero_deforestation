@@ -19,3 +19,5 @@ python scripts/train_LR_on_top_of_openclip.py --model_name ViT-L-14 --pretrained
 python scripts/train_LR_on_top_of_openclip.py --model_name ViT-L-14 --pretrained openai
 python scripts/train_LR_on_top_of_openclip.py --model_name ViT-H-14 --pretrained laion2b_s32b_b79k
 python scripts/train_LR_on_top_of_openclip.py --model_name ViT-g-14 --pretrained laion2b_s12b_b42k
+# finally create the ensemble
+python scripts/create_ensemble.py  --best_n_models 13
