@@ -10,7 +10,7 @@
       
         <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/modeling/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../res/tree-icon-illustration-free-vector.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
@@ -83,8 +83,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="zero_deforestation" class="md-header__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -262,8 +261,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="zero_deforestation" class="md-nav__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     zero_deforestation
@@ -354,6 +352,10 @@
         
           
         
+          
+        
+          
+        
       
       
         
@@ -383,7 +385,7 @@
   
     <li class="md-nav__item">
       <a href="01_Iteration_1/" class="md-nav__link">
-        Iteration 1. Iteration_title
+        Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
       </a>
     </li>
   
@@ -396,8 +398,36 @@
   
   
     <li class="md-nav__item">
-      <a href="nn_Iteration_n/" class="md-nav__link">
-        Iteration n. Iteration_title
+      <a href="02_Iteration_2/" class="md-nav__link">
+        Iteration 2. Fine-tune multiple models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_Iteration_3/" class="md-nav__link">
+        Iteration 3. Train Logistic Regression on top of OpenClip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_Iteration_4/" class="md-nav__link">
+        Iteration 4. Create an ensemble
       </a>
     </li>
   
@@ -525,6 +555,54 @@
     Select modeling technique
   </a>
   
+    <nav class="md-nav" aria-label="Select modeling technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laion-openclip" class="md-nav__link">
+    LAION OpenClip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models-pretrained-on-imagenet" class="md-nav__link">
+    Models pretrained on Imagenet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#big-transfer-bit" class="md-nav__link">
+    Big Transfer (BiT)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-satellite-image-pretrained-models" class="md-nav__link">
+    Specific satellite image pretrained models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-resources" class="md-nav__link">
+    Useful resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -560,6 +638,56 @@ Many modeling techniques make specific assumptions about the data—for example,
 that all attributes have uniform distributions, no missing values allowed,
 class attribute must be symbolic, etc. Record any such assumptions made. --->
 
+<p>My plan for the challenge is to fine-tune several pretrained models for the task
+of satellite image classification. Then I will build an ensemble using those models.</p>
+<p>In this section I'm going to gather information about the possible models that we
+could use.</p>
+<h3 id="laion-openclip">LAION OpenClip</h3>
+<p>To my knowledge this is the biggest pretrained model that is available today. It has
+a <a href="https://github.com/mlfoundations/open_clip">github repo</a> where it is shown how
+to use the model for zero-shot classification and another repo where it shows one
+way to <a href="https://github.com/mlfoundations/wise-ft">fine-tune</a></p>
+<ul>
+<li>I should try the fine-tuning but I could also try to train a logistic regression
+model on top of OpenClip.</li>
+<li>There are multiple versions of OpenClip that I could try for the ensemble</li>
+</ul>
+<h3 id="models-pretrained-on-imagenet">Models pretrained on Imagenet</h3>
+<p><a href="https://towardsdatascience.com/detecting-deforestation-from-satellite-images-7aa6dfbd9f61">Detecting deforestation from satellite images</a> In this post they use a simple ResNet50 and
+get similar results to the Kaggle competition. They do not say it explicitly but it is very likely
+the ResNet was pretrained on Imagenet.</p>
+<p>On the Kaggle competition all the teams used pretrained models: <a href="https://www.kaggle.com/competitions/planet-understanding-the-amazon-from-space/discussion/31862#200237">overfitting describing its models</a></p>
+<p><a href="https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-satellite-photos-of-the-amazon-rainforest/">Multi-Label Classification of Satellite Photos of the Amazon Rainforest</a> Here also pretrained models on Imagenet are used.</p>
+<p><a href="https://keras.io/api/applications/">Keras models pretrained on Imagenet</a></p>
+<h3 id="big-transfer-bit">Big Transfer (BiT)</h3>
+<p><a href="https://github.com/google-research/big_transfer">https://github.com/google-research/big_transfer</a></p>
+<blockquote>
+<p>In this repository we release multiple models from the Big Transfer (BiT): General Visual Representation Learning paper that were pre-trained on the ILSVRC-2012 and ImageNet-21k datasets. We provide the code to fine-tuning the released models in the major deep learning frameworks TensorFlow 2, PyTorch and Jax/Flax.
+We hope that the computer vision community will benefit by employing more powerful ImageNet-21k pretrained models as opposed to conventional models pre-trained on the ILSVRC-2012 dataset.</p>
+</blockquote>
+<p>I have already used this models for other competitions. I should have a look at the fine-tuning
+code and test it if possible before the challenge.</p>
+<h3 id="specific-satellite-image-pretrained-models">Specific satellite image pretrained models</h3>
+<p>Let's try to find models that were trained on satellite image data.</p>
+<ul>
+<li><a href="https://tfhub.dev/google/collections/remote_sensing/1">Tensorflow Hub Remote sensing</a> This collection contains models that were pre-trained for the remote sensing domain concentrating on satellite and airborne imagery.
+ These models provide representations for transfer learning on custom datasets. All parameters in the modules are trainable, and fine-tuning all parameters is the recommended practice.</li>
+<li>Did not find anything relevant on <a href="https://huggingface.co/">HuggingFace</a></li>
+<li><a href="https://github.com/ViTAE-Transformer/ViTAE-Transformer-Remote-Sensing/tree/main/Scene%20Recognition">An Empirical Study of Remote Sensing Pretraining</a> This pytorch models are pretrained on MillionAID. Million-AID is a large-scale benchmark dataset containing a million instances for remote sensing scene classification. However this pretraining does not seem to give an advantage over Imagenet pretraining.</li>
+</ul>
+<h3 id="useful-resources">Useful resources</h3>
+<ul>
+<li>
+<p><a href="https://github.com/robmarkcole/satellite-image-deep-learning">https://github.com/robmarkcole/satellite-image-deep-learning</a> This repository lists resources on the topic of deep learning applied to satellite and aerial imagery.</p>
+</li>
+<li>
+<p><a href="https://www.kaggle.com/c/planet-understanding-the-amazon-from-space">Kaggle's Planet: Understanding the Amazon from Space</a></p>
+</li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>If the data for the channel are standard RGB images we have 4 different families of pretrained models
+to create a powerful ensemble:</p>
+<p><img alt="summary_model_families" src="res/summary_model_families.png" /></p>
 <h2 id="generate-test-design">Generate test design</h2>
 <!---Describe the intended plan for training, testing, and evaluating the models.
 A primary component of the plan is determining how to divide the available dataset
@@ -574,12 +702,20 @@ to make a lot of submissions. Sometimes is not easy to have a good correlation b
 validation score and LB score
 --->
 
+<p>Since there is a very limited timeline I believe that the best validation strategy
+is to simply split the train set between a train and a validation set. Using cross-validation will likely result on slightly better scores but will require
+more computing time.</p>
+<p>Once we have the data I will explore it to see if a random split is enough or
+a more specific criteria is needed.</p>
+<p>Also the number of submissions and to see if there is public and private test set
+will be relevant to choose the test design.</p>
+
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-11-13
+      2022-11-17
     
   </small>
 </div>
@@ -617,13 +753,13 @@ validation score and LB score
       
       
         
-        <a href="01_Iteration_1/" class="md-footer__link md-footer__link--next" aria-label="Next: Iteration 1. Iteration_title" rel="next">
+        <a href="01_Iteration_1/" class="md-footer__link md-footer__link--next" aria-label="Next: Iteration 1. Fine-tune ResNet50 pretrained on Imagenet" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Iteration 1. Iteration_title
+              Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
             </div>
           </div>
           <div class="md-footer__button md-icon">

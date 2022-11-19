@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/utils/00_Challenge_Workflow/">
+        <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/modeling/03_Iteration_3/">
       
       <link rel="icon" href="../../res/tree-icon-illustration-free-vector.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Challenge workflow - zero_deforestation</title>
+        <title>Iteration 3. Train Logistic Regression on top of OpenClip - zero_deforestation</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#challenge-workflow" class="md-skip">
+        <a href="#iteration-3-train-logistic-regression-on-top-of-openclip" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Challenge workflow
+              Iteration 3. Train Logistic Regression on top of OpenClip
             
           </span>
         </div>
@@ -201,13 +201,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../modeling/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Modeling
       </a>
     </li>
@@ -217,15 +219,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../utils/00_Challenge_Workflow/" class="md-tabs__link">
         Utils
       </a>
     </li>
@@ -332,12 +332,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -359,7 +361,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../modeling/">Modeling</a>
+          <a href="../">Modeling</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -382,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modeling/01_Iteration_1/" class="md-nav__link">
+      <a href="../01_Iteration_1/" class="md-nav__link">
         Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
       </a>
     </li>
@@ -396,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modeling/02_Iteration_2/" class="md-nav__link">
+      <a href="../02_Iteration_2/" class="md-nav__link">
         Iteration 2. Fine-tune multiple models
       </a>
     </li>
@@ -408,11 +410,80 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../modeling/03_Iteration_3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Iteration 3. Train Logistic Regression on top of OpenClip
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Iteration 3. Train Logistic Regression on top of OpenClip
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-goal" class="md-nav__link">
+    3.1 Goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-development" class="md-nav__link">
+    3.2 Development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-results" class="md-nav__link">
+    3.3 Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-summary" class="md-nav__link">
+    3.4 Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-next-steps" class="md-nav__link">
+    3.5 Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -424,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modeling/04_Iteration_4/" class="md-nav__link">
+      <a href="../04_Iteration_4/" class="md-nav__link">
         Iteration 4. Create an ensemble
       </a>
     </li>
@@ -444,14 +515,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -480,59 +549,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Challenge workflow
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../utils/00_Challenge_Workflow/" class="md-nav__link">
         Challenge workflow
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#start-of-the-challenge" class="md-nav__link">
-    Start of the challenge
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#end-of-the-challenge" class="md-nav__link">
-    End of the challenge
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -544,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_cheatsheet/" class="md-nav__link">
+      <a href="../../utils/markdown_cheatsheet/" class="md-nav__link">
         Markdown cheatsheet
       </a>
     </li>
@@ -558,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../methodology/" class="md-nav__link">
+      <a href="../../utils/methodology/" class="md-nav__link">
         Methodology
       </a>
     </li>
@@ -599,15 +620,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#start-of-the-challenge" class="md-nav__link">
-    Start of the challenge
+  <a href="#31-goal" class="md-nav__link">
+    3.1 Goal
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#end-of-the-challenge" class="md-nav__link">
-    End of the challenge
+  <a href="#32-development" class="md-nav__link">
+    3.2 Development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-results" class="md-nav__link">
+    3.3 Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-summary" class="md-nav__link">
+    3.4 Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-next-steps" class="md-nav__link">
+    3.5 Next steps
   </a>
   
 </li>
@@ -624,43 +666,103 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/ironbar/zero_deforestation/edit/master/docs/utils/00_Challenge_Workflow.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ironbar/zero_deforestation/edit/master/docs/modeling/03_Iteration_3.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<h1 id="challenge-workflow">Challenge workflow</h1>
-<h2 id="start-of-the-challenge">Start of the challenge</h2>
-<ol>
-<li>Create a repository for the code using cookiecutter</li>
-<li>Add dates to the calendar</li>
-<li>Download rules of the challenge</li>
-<li>Bookmark challenge folder on file explorer</li>
-<li>Create a Google keep label for tasks and ideas of the challenge</li>
-<li>Download the challenge data</li>
-<li>Create a conda environment for the challenge and add it to jupyter</li>
-</ol>
-<pre><code class="language-bash">conda create -n barbol pytest rope pylint tqdm numpy pandas scikit-learn ipython ipykernel coverage ipywidgets matplotlib python=3.10
-conda activate barbol
-python -m ipykernel install --user --name $CONDA_DEFAULT_ENV --display-name &quot;Python ($CONDA_DEFAULT_ENV)&quot;
-make env-export
-</code></pre>
-<ol>
-<li>Create a github repo to have a backup of the data. Vscode allows to do it directly without having to go to the website, choose a private repo. At the end of the challenge it will be made public.</li>
-<li>Use TDD methodology whenever possible, this will save time because errors
-won't be propagated along the challenge.</li>
-<li>Have an apprentice attitude and collaborate on the forum.</li>
-<li>Add a nice picture to README</li>
-</ol>
-<h2 id="end-of-the-challenge">End of the challenge</h2>
-<ol>
-<li>Prepare a report with a summary of the approach to the challenge</li>
-<li>Download the Google keep tasks to the repository in pdf format</li>
-<li>Delete the tasks on google keep and the label</li>
-<li>Delete unnecessary data</li>
-<li>Update the environment yml</li>
-</ol>
+<h1 id="iteration-3-train-logistic-regression-on-top-of-openclip">Iteration 3. Train Logistic Regression on top of OpenClip</h1>
+<!---
+The work is done using short iterations. Each iteration needs to have a very
+clear goal. This allows to gain greater knowledge of the problem on each iteration.
+--->
+
+<h2 id="31-goal">3.1 Goal</h2>
+<p>We are going to train a Logistic Regression model on top of the OpenClip embeddings. OpenClip models
+are pretrained on LAION dataset which is the same dataset that was used to train Stable Diffusion.
+Stable diffusion is able to generate satellite images so that implies that there are satellite
+images on LAION dataset. Thus we can use the OpenClip embeddings to train a model that can classify
+satellite images.</p>
+<h2 id="32-development">3.2 Development</h2>
+<p>I have prepared a script following the examples of the <a href="https://github.com/mlfoundations/open_clip">github repo</a></p>
+<p>If we had more time it would have been better to fine-tune the OpenClip model instead of training
+a Logistic Regression on top of the embeddings.</p>
+<h2 id="33-results">3.3 Results</h2>
+<table>
+<thead>
+<tr>
+<th>model</th>
+<th>pretrained</th>
+<th>val f1 score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ViT-B-16-plus-240</td>
+<td>laion400m_e32</td>
+<td>0.7837</td>
+</tr>
+<tr>
+<td>ViT-B-32-quickgelu</td>
+<td>laion2b_s34b_b79k</td>
+<td>0.743</td>
+</tr>
+<tr>
+<td>ViT-L-14</td>
+<td>laion2b_s32b_b82k</td>
+<td>0.7335</td>
+</tr>
+<tr>
+<td>ViT-L-14</td>
+<td>laion400m_e32</td>
+<td>0.7325</td>
+</tr>
+<tr>
+<td>ViT-H-14</td>
+<td>laion2b_s32b_b79k</td>
+<td>0.7248</td>
+</tr>
+<tr>
+<td>ViT-B-16</td>
+<td>openai</td>
+<td>0.7245</td>
+</tr>
+<tr>
+<td>ViT-g-14</td>
+<td>laion2b_s12b_b42k</td>
+<td>0.7224</td>
+</tr>
+<tr>
+<td>ViT-B-16</td>
+<td>laion400m_e32</td>
+<td>0.7193</td>
+</tr>
+<tr>
+<td>ViT-B-32-quickgelu</td>
+<td>openai</td>
+<td>0.715</td>
+</tr>
+<tr>
+<td>ViT-L-14</td>
+<td>openai</td>
+<td>0.7084</td>
+</tr>
+<tr>
+<td>ViT-B-32-quickgelu</td>
+<td>laion400m_e32</td>
+<td>0.6966</td>
+</tr>
+</tbody>
+</table>
+<p>The results are quite impressive for a simple Logistic Regression model, this implies that
+the features extracted by the OpenClip models are very useful for the task.</p>
+<p>Specially good is the result of ViT-B-16-plus-240. I don't trust it too much because is much
+better than any of the other models.</p>
+<h2 id="34-summary">3.4 Summary</h2>
+<p>We have achieved competitive scores using Openclip models.</p>
+<h2 id="35-next-steps">3.5 Next steps</h2>
+<p>Create an ensemble.</p>
 
   <hr>
 <div class="md-source-file">
@@ -689,7 +791,7 @@ won't be propagated along the challenge.</li>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../modeling/04_Iteration_4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Iteration 4. Create an ensemble" rel="prev">
+        <a href="../02_Iteration_2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Iteration 2. Fine-tune multiple models" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -698,20 +800,20 @@ won't be propagated along the challenge.</li>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Iteration 4. Create an ensemble
+              Iteration 2. Fine-tune multiple models
             </div>
           </div>
         </a>
       
       
         
-        <a href="../markdown_cheatsheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Markdown cheatsheet" rel="next">
+        <a href="../04_Iteration_4/" class="md-footer__link md-footer__link--next" aria-label="Next: Iteration 4. Create an ensemble" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Markdown cheatsheet
+              Iteration 4. Create an ensemble
             </div>
           </div>
           <div class="md-footer__button md-icon">

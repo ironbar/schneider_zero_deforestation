@@ -10,7 +10,7 @@
       
         <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/03_Data_Preparation/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../res/tree-icon-illustration-free-vector.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
@@ -83,8 +83,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="zero_deforestation" class="md-header__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -262,8 +261,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="zero_deforestation" class="md-nav__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     zero_deforestation
@@ -375,20 +373,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#integrate-data" class="md-nav__link">
-    Integrate Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#format-data" class="md-nav__link">
-    Format Data
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -415,6 +399,10 @@
         
           
             
+          
+        
+          
+        
           
         
           
@@ -450,7 +438,7 @@
   
     <li class="md-nav__item">
       <a href="../modeling/01_Iteration_1/" class="md-nav__link">
-        Iteration 1. Iteration_title
+        Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
       </a>
     </li>
   
@@ -463,8 +451,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../modeling/nn_Iteration_n/" class="md-nav__link">
-        Iteration n. Iteration_title
+      <a href="../modeling/02_Iteration_2/" class="md-nav__link">
+        Iteration 2. Fine-tune multiple models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling/03_Iteration_3/" class="md-nav__link">
+        Iteration 3. Train Logistic Regression on top of OpenClip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling/04_Iteration_4/" class="md-nav__link">
+        Iteration 4. Create an ensemble
       </a>
     </li>
   
@@ -608,20 +624,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#integrate-data" class="md-nav__link">
-    Integrate Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#format-data" class="md-nav__link">
-    Format Data
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -650,6 +652,7 @@ volume or data types. Note that data selection covers selection of attributes
 (columns) as well as selection of records (rows) in a table.
 List the data to be included/excluded and the reasons for these decisions.--->
 
+<p>All the available data will be used for this challenge.</p>
 <h2 id="clean-data">Clean Data</h2>
 <!---Raise the data quality to the level required by the selected analysis techniques.
 This may involve selection of clean subsets of the data, the insertion of suitable
@@ -659,26 +662,22 @@ quality problems reported during the Verify Data Quality task of the Data
 Understanding phase. Transformations of the data for cleaning purposes and the
 possible impact on the analysis results should be considered. --->
 
+<p>There is no time to clean the data. Since the dataset is very small I will assume that the data is clean.</p>
 <h2 id="construct-data">Construct Data</h2>
 <!---This task includes constructive data preparation operations such as the
 production of derived attributes or entire new records, or transformed values
 for existing attributes. --->
 
-<h2 id="integrate-data">Integrate Data</h2>
-<!---These are methods whereby information is combined from multiple tables or
-records to create new recordsor values. --->
-
-<h2 id="format-data">Format Data</h2>
-<!---Formatting transformations refer to primarily syntactic modifications made
-to the data that do not change its meaning, but might be required by the
-modeling tool. --->
+<p>I will only use the images for training the model.</p>
+<p>Since my plan is to use different pretrained models I will have to do different preprocessing for
+each of them.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-11-13
+      2022-11-19
     
   </small>
 </div>

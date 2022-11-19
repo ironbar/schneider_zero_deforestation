@@ -2,62 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/01_Business_Understanding/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/02_Data_Understanding/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/03_Data_Preparation/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/05_Solution_Summary/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/06_Winning_Model_Documentation/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/modeling/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/modeling/01_Iteration_1/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://ironbar.github.io/zero_deforestation/modeling/nn_Iteration_n/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <loc>https://ironbar.github.io/zero_deforestation/modeling/02_Iteration_2/</loc>
+         <lastmod>2022-11-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ironbar.github.io/zero_deforestation/modeling/03_Iteration_3/</loc>
+         <lastmod>2022-11-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ironbar.github.io/zero_deforestation/modeling/04_Iteration_4/</loc>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/utils/00_Challenge_Workflow/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/utils/markdown_cheatsheet/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ironbar.github.io/zero_deforestation/utils/methodology/</loc>
-         <lastmod>2022-11-13</lastmod>
+         <lastmod>2022-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

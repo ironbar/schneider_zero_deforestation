@@ -10,7 +10,7 @@
       
         <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/01_Business_Understanding/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../res/tree-icon-illustration-free-vector.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
@@ -83,8 +83,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="zero_deforestation" class="md-header__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -262,8 +261,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="zero_deforestation" class="md-nav__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     zero_deforestation
@@ -336,6 +334,32 @@
     Evaluation
   </a>
   
+    <nav class="md-nav" aria-label="Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f1-score" class="md-nav__link">
+    F1-score
+  </a>
+  
+    <nav class="md-nav" aria-label="F1-score">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f1-score-implementations" class="md-nav__link">
+    F1-score implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -345,6 +369,13 @@
   
     <nav class="md-nav" aria-label="Assess situation">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeline" class="md-nav__link">
+    Timeline
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#terminology" class="md-nav__link">
@@ -427,6 +458,10 @@
         
           
         
+          
+        
+          
+        
       
       
         
@@ -456,7 +491,7 @@
   
     <li class="md-nav__item">
       <a href="../modeling/01_Iteration_1/" class="md-nav__link">
-        Iteration 1. Iteration_title
+        Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
       </a>
     </li>
   
@@ -469,8 +504,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../modeling/nn_Iteration_n/" class="md-nav__link">
-        Iteration n. Iteration_title
+      <a href="../modeling/02_Iteration_2/" class="md-nav__link">
+        Iteration 2. Fine-tune multiple models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling/03_Iteration_3/" class="md-nav__link">
+        Iteration 3. Train Logistic Regression on top of OpenClip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling/04_Iteration_4/" class="md-nav__link">
+        Iteration 4. Create an ensemble
       </a>
     </li>
   
@@ -605,6 +668,32 @@
     Evaluation
   </a>
   
+    <nav class="md-nav" aria-label="Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f1-score" class="md-nav__link">
+    F1-score
+  </a>
+  
+    <nav class="md-nav" aria-label="F1-score">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f1-score-implementations" class="md-nav__link">
+    F1-score implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -614,6 +703,13 @@
   
     <nav class="md-nav" aria-label="Assess situation">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeline" class="md-nav__link">
+    Timeline
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#terminology" class="md-nav__link">
@@ -659,10 +755,62 @@
 <!--- Look at the challenge description, understand the goal of the challenge
 and write it here with your own words. Use images if they improve the explanation--->
 
+<blockquote>
+<p>The data science challenge will consist in creating an image classification model, which from a given dataset, predicts what type of deforestation appears in the image with the objective of early detection of this type of actions in protected lands.</p>
+</blockquote>
+<!--- --->
+
+<blockquote>
+<p>few thousand training and testing images</p>
+</blockquote>
+<!--- --->
+
+<blockquote>
+<p>The challenge will be to create an image classification model and train it with the training images we provide, once you find the model that maximizes the f1-score, you will have to apply your model to classify the testing images. Your score will depend on the F1-score of your model with the test images, the quality of your code and the explanation of the solution you provide.</p>
+</blockquote>
+<!--- --->
+
+<blockquote>
+<p>the dataset will consist of a few thousand satellite images of forests. And a document that relates these images to their respective label. The number of classes will be revealed on the day of the competition.</p>
+</blockquote>
 <h2 id="evaluation">Evaluation</h2>
 <!--- Understand the metric used on the challenge, write it here and study
 the characteristics of the metric --->
 
+<blockquote>
+<p>Your score will depend on:</p>
+<ul>
+<li>the F1-score of your model with the test images</li>
+<li>the quality of your code</li>
+<li>the quality of the explanation of the solution you provide.</li>
+</ul>
+</blockquote>
+<p><img alt="challenge_evaluation_code_quality" src="../res/challenge_evaluation_code_quality.png" /></p>
+<p>So we have to train a precise model, but at the same time we have to make clean code and nice documentation.</p>
+<blockquote>
+<p>The winning teams will be determined by a combination of hard skills and soft skills correction.<br />
+The hard skills will be the responsibility of NUWE and the soft skills will be the responsibility of
+Schneider Electric.</p>
+</blockquote>
+<p>It is unclear how Schneider will judge this soft skills. On the challenge there are some times to
+interact with the Schneider team so maybe they will use that information. However this mention to the
+soft skills is only done in the rules, not in the website of the challenge.</p>
+<h3 id="f1-score">F1-score</h3>
+<p><a href="https://en.wikipedia.org/wiki/F-score">F-score on Wikipedia</a></p>
+<p><img alt="f1-score" src="../res/f1-score.png" /></p>
+<p><img alt="precision-recall" src="../res/precision-recall.png" /></p>
+<p>The F1 score gives the same weight to precision and recall. This implies that we should use a balanced
+dataset when training to be able to maximize F1 score. For example if the train dataset has too many
+positive classes the model will tend to focus on recall at the cost is precision because the cost of
+misclassifying a positive class is bigger than misclassifying a a negative class.</p>
+<h4 id="f1-score-implementations">F1-score implementations</h4>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html">sklearn</a></li>
+<li><a href="https://www.tensorflow.org/addons/api_docs/python/tfa/metrics/F1Score">keras</a></li>
+</ul>
+<blockquote>
+<p>In the multi-class and multi-label case, this is the average of the F1 score of each class with weighting depending on the average parameter.</p>
+</blockquote>
 <h2 id="assess-situation">Assess situation</h2>
 <!---This task involves more detailed fact-finding about all of the resources,
 constraints, assumptions, and other factors that should be considered in determining
@@ -673,6 +821,13 @@ the data analysis goal and project plan
 * other projects. May I have other more interesting projects in the horizon?
  --->
 
+<h3 id="timeline">Timeline</h3>
+<p>The challenge starts ad 09:00 on November 19th 2022. It ends on 23:59 of the same day. There is some mentoring time along the day. So excluding mentoring time, lunch
+time, ... there are around 10 hours to do the challenge.</p>
+<p>The timeline is really short compared to typical challenges. Probably the key to
+do well in this challenge is the preparation. There is already information about
+the challenge and it is possible to read about the state of the art and do some
+preliminary work.</p>
 <h3 id="terminology">Terminology</h3>
 <!--- Sometimes the field of the challenge has specific terms, if that is the
 case write them here, otherwise delete this section.--->
@@ -682,12 +837,32 @@ case write them here, otherwise delete this section.--->
 during the challenge I will have a better understanding of the project and
 with better information I could decide other actions not considered here.--->
 
+<p>The challenge is to make a model to classify satellite images about forest deforestation. The number
+of available images is in the order of thousands, so it is a small dataset. When dealing with small
+datasets the typical solution is to take a pretrained model and fine-tune it on the small dataset.</p>
+<p>So that is likely the winning strategy for this challenge: finding good pretrained
+models and fine-tuning them. However satellite images sometimes have frequency bands
+different to the typical RGB images and that would make finding a pretrained model
+more difficult.</p>
+<p>Stable-diffusion is able to generate <code>satellite images of deforestation forest</code> thus
+it is likely that <a href="https://laion.ai/blog/large-openclip/">Laion OpenClip</a> could be
+helpful for this challenge.</p>
+<p>The plan would be:</p>
+<ol>
+<li>On the days before the challenge gather information about pretrained models and datasets that
+   could be useful to classify satellite images of forests. If possible do a fine-tuning rehearsal
+   with them so the day of the challenge the work is almost done.</li>
+<li>On the day of the challenge explore the dataset to decide what of the available pretrained models
+   are the most useful. Using cross-validation or a fixed validation set fine-tune an ensemble of
+   models for the challenge. Create very good documentation of the experimentation process.</li>
+</ol>
+
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-11-13
+      2022-11-19
     
   </small>
 </div>

@@ -10,7 +10,7 @@
       
         <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/02_Data_Understanding/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../res/tree-icon-illustration-free-vector.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
@@ -83,8 +83,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="zero_deforestation" class="md-header__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -262,8 +261,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="zero_deforestation" class="md-nav__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     zero_deforestation
@@ -428,6 +426,10 @@
         
           
         
+          
+        
+          
+        
       
       
         
@@ -457,7 +459,7 @@
   
     <li class="md-nav__item">
       <a href="../modeling/01_Iteration_1/" class="md-nav__link">
-        Iteration 1. Iteration_title
+        Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
       </a>
     </li>
   
@@ -470,8 +472,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../modeling/nn_Iteration_n/" class="md-nav__link">
-        Iteration n. Iteration_title
+      <a href="../modeling/02_Iteration_2/" class="md-nav__link">
+        Iteration 2. Fine-tune multiple models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling/03_Iteration_3/" class="md-nav__link">
+        Iteration 3. Train Logistic Regression on top of OpenClip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling/04_Iteration_4/" class="md-nav__link">
+        Iteration 4. Create an ensemble
       </a>
     </li>
   
@@ -672,16 +702,31 @@ with the execution of similar future projects.
 
 --->
 
+<p>Downloading the data was very easy because it is a small dataset.</p>
 <h2 id="external-data">External data</h2>
 <!--- It is allowed in this challenge? If so write it here ideas of how to find
 it and if people have already posted it on the forum describe it. --->
 
+<p>I'm not going to use External data for this challenge.</p>
 <h2 id="describe-data">Describe data</h2>
 <!---Describe the data that has been acquired, including the format of the data,
 the quantity of data (for example, the number of records and fields in each table),
 the identities of the fields, and any other surface features which have been
 discovered. Evaluate whether the data acquired satisfies the relevant requirements. --->
 
+<blockquote>
+<p>For this challenge, you will have 2 CSVs: Train and Test. As their names indicate, the first one will be used to train your classification model on the forest images and test to know to which label they belong. It is important to remember to be careful with the paths for reading images in the train_test_data folder.</p>
+</blockquote>
+<!---  --->
+
+<blockquote>
+<p>There are 3 categories:</p>
+<ul>
+<li><strong>Plantation</strong>:Encoded with number 0, Network of rectangular plantation blocks, connected by a well-defined road grid. In hilly areas the layout of the plantation may follow topographic features. In this group you can find: Oil Palm Plantation, Timber Plantation and Other large-scale plantations.</li>
+<li><strong>Grassland/Shrubland</strong>: Encoded with number 1, Large homogeneous areas with few or sparse shrubs or trees, and which are generally persistent. Distinguished by the absence of signs of agriculture, such as clearly defined field boundaries.</li>
+<li><strong>Smallholder Agriculture</strong>: Encoded with number 2, Small scale area, in which you can find deforestation covered by agriculture, mixed plantation or oil palm plantation.</li>
+</ul>
+</blockquote>
 <h2 id="explore-data">Explore data</h2>
 <!---This task addresses data mining questions using querying, visualization,
 and reporting techniques. These include distribution of key attributes (for example,
@@ -696,24 +741,39 @@ Some techniques:
 * Intuitions about the data
 --->
 
+<ul>
+<li>We have 1714 images for train-val and 635 test images. This is a very small dataset.</li>
+<li>They provide coordinates and year for the pictures. However that information in theory should not be relevant since we have the images. All the information to classify the deforestation categories should be available in the images</li>
+<li>There are 3 categories and they are not balanced. So it is possible that balancing them during the training will result on a better validation F1 score.</li>
+<li>All images are squared and have the same shape 332x332x3. They are saved in <code>png</code> format.</li>
+</ul>
 <h2 id="verify-data-quality">Verify data quality</h2>
 <!---Examine the quality of the data, addressing questions such as: Is the data
 complete (does it cover all the cases required)? Is it correct, or does it contain
 errors and, if there are errors, how common are they? Are there missing values in
 the data? If so, how are they represented, where do they occur, and how common are they? --->
 
+<p>The images are very dark, maybe a preprocessing step to increase the contrast could be useful.
+I have studied the distribution of the pixel values and found that we could multiply the images by 2 to increase the contrast.</p>
+<p>The following plot shows a few original images.</p>
+<p><img alt="images_before_improving_contrast" src="../res/images_before_improving_contrast.png" /></p>
+<p>Now the same images after increasing the contrast with a factor of 2 are shown.</p>
+<p><img alt="images_after_improving_contrast" src="../res/images_after_improving_contrast.png" /></p>
 <h2 id="amount-of-data">Amount of data</h2>
 <!---
 How big is the train dataset? How compared to the test set?
 Is enough for DL?
 --->
 
+<p>The dataset is very tiny for the Deep Learning standards. The best option is to fine-tune a model
+that was pretrained on a bigger dataset.</p>
+
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-11-13
+      2022-11-19
     
   </small>
 </div>

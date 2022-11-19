@@ -10,12 +10,12 @@
       
         <link rel="canonical" href="https://ironbar.github.io/zero_deforestation/modeling/01_Iteration_1/">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../res/tree-icon-illustration-free-vector.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Iteration 1. Iteration_title - zero_deforestation</title>
+        <title>Iteration 1. Fine-tune ResNet50 pretrained on Imagenet - zero_deforestation</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#iteration-1-iteration_title" class="md-skip">
+        <a href="#iteration-1-fine-tune-resnet50-pretrained-on-imagenet" class="md-skip">
           Skip to content
         </a>
       
@@ -83,8 +83,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="zero_deforestation" class="md-header__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Iteration 1. Iteration_title
+              Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
             
           </span>
         </div>
@@ -262,8 +261,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="zero_deforestation" class="md-nav__button md-logo" aria-label="zero_deforestation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../../res/tree-icon-illustration-free-vector.png" alt="logo">
 
     </a>
     zero_deforestation
@@ -354,6 +352,10 @@
         
           
         
+          
+        
+          
+        
       
       
         
@@ -392,12 +394,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Iteration 1. Iteration_title
+          Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Iteration 1. Iteration_title
+        Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
       </a>
       
         
@@ -427,6 +429,33 @@
     1.2 Development
   </a>
   
+    <nav class="md-nav" aria-label="1.2 Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-install-tensorflow-with-pip" class="md-nav__link">
+    1.2.1 Install tensorflow with pip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-install-other-dependencies" class="md-nav__link">
+    1.2.2 Install other dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resnet50-train-script" class="md-nav__link">
+    ResNet50 train script
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -434,11 +463,52 @@
     1.3 Results
   </a>
   
+    <nav class="md-nav" aria-label="1.3 Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-does-contrast-increase-improve-the-results" class="md-nav__link">
+    1.3.1 Does contrast increase improve the results?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-data-augmentation" class="md-nav__link">
+    1.3.2 Data augmentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-dropout" class="md-nav__link">
+    1.3.3 Dropout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-class-balance" class="md-nav__link">
+    1.3.4 Class balance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-next-steps" class="md-nav__link">
-    1.4 Next steps
+  <a href="#14-summary" class="md-nav__link">
+    1.4 Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-next-steps" class="md-nav__link">
+    1.5 Next steps
   </a>
   
 </li>
@@ -458,8 +528,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../nn_Iteration_n/" class="md-nav__link">
-        Iteration n. Iteration_title
+      <a href="../02_Iteration_2/" class="md-nav__link">
+        Iteration 2. Fine-tune multiple models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Iteration_3/" class="md-nav__link">
+        Iteration 3. Train Logistic Regression on top of OpenClip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Iteration_4/" class="md-nav__link">
+        Iteration 4. Create an ensemble
       </a>
     </li>
   
@@ -594,6 +692,33 @@
     1.2 Development
   </a>
   
+    <nav class="md-nav" aria-label="1.2 Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-install-tensorflow-with-pip" class="md-nav__link">
+    1.2.1 Install tensorflow with pip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-install-other-dependencies" class="md-nav__link">
+    1.2.2 Install other dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resnet50-train-script" class="md-nav__link">
+    ResNet50 train script
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -601,11 +726,52 @@
     1.3 Results
   </a>
   
+    <nav class="md-nav" aria-label="1.3 Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-does-contrast-increase-improve-the-results" class="md-nav__link">
+    1.3.1 Does contrast increase improve the results?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-data-augmentation" class="md-nav__link">
+    1.3.2 Data augmentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-dropout" class="md-nav__link">
+    1.3.3 Dropout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-class-balance" class="md-nav__link">
+    1.3.4 Class balance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-next-steps" class="md-nav__link">
-    1.4 Next steps
+  <a href="#14-summary" class="md-nav__link">
+    1.4 Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-next-steps" class="md-nav__link">
+    1.5 Next steps
   </a>
   
 </li>
@@ -628,23 +794,209 @@
 
 
 
-<h1 id="iteration-1-iteration_title">Iteration 1. Iteration_title</h1>
+<h1 id="iteration-1-fine-tune-resnet50-pretrained-on-imagenet">Iteration 1. Fine-tune ResNet50 pretrained on Imagenet</h1>
 <!---
 The work is done using short iterations. Each iteration needs to have a very
 clear goal. This allows to gain greater knowledge of the problem on each iteration.
 --->
 
 <h2 id="11-goal">1.1 Goal</h2>
+<p>The goal of this Iteration is to fine-tune a ResNet50 Keras pretrained model that was trained on Imagenet.</p>
 <h2 id="12-development">1.2 Development</h2>
+<h3 id="121-install-tensorflow-with-pip">1.2.1 Install tensorflow with pip</h3>
+<p><a href="https://www.tensorflow.org/install/pip">https://www.tensorflow.org/install/pip</a></p>
+<pre><code class="language-bash">conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+pip install tensorflow==2.10
+python -c &quot;import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))&quot;
+</code></pre>
+<p>I had to delete and create the environment from zero because tensorflow is not ready
+for python 3.11. Also I had to downgrade tensorflow from <code>2.11</code> to <code>2.10</code> because
+GPU was not working. Then I had to downgrade again to <code>2.8.3</code> because of this <a href="https://github.com/tensorflow/tensorflow/issues/56242">bug</a></p>
+<h3 id="122-install-other-dependencies">1.2.2 Install other dependencies</h3>
+<pre><code class="language-bash">pip install opencv-python
+pip install tensorflow-addons
+</code></pre>
+<h3 id="resnet50-train-script">ResNet50 train script</h3>
+<p>I have the following questions regarding the fine-tuning strategy:</p>
+<ul>
+<li>Does contrast increase improve the results?</li>
+<li>Dropout</li>
+<li>Data augmentation</li>
+<li>Class balance</li>
+</ul>
+<p>The best way to answer them is to create an script and run multiple experiments for each option. That
+way we could have mean value and uncertainty for each option.</p>
 <h2 id="13-results">1.3 Results</h2>
-<h2 id="14-next-steps">1.4 Next steps</h2>
+<p>I have run 6 experiments for each option to be able to estimate the mean f1 score and the uncertainty.
+All results are validation scores. I'm using 20% of the training data for validation, always with
+the same seed.</p>
+<h3 id="131-does-contrast-increase-improve-the-results">1.3.1 Does contrast increase improve the results?</h3>
+<table>
+<thead>
+<tr>
+<th>experiment</th>
+<th>mean f1 score</th>
+<th>uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>original images</td>
+<td>0.715</td>
+<td>0.006</td>
+</tr>
+<tr>
+<td>increase contrast x2</td>
+<td>0.709</td>
+<td>0.014</td>
+</tr>
+</tbody>
+</table>
+<p>There is no statistically significant difference between the two experiments. Thus it's better to
+keep it simple and use the original images.</p>
+<h3 id="132-data-augmentation">1.3.2 Data augmentation</h3>
+<table>
+<thead>
+<tr>
+<th>random flip</th>
+<th>random rotation</th>
+<th>random contrast</th>
+<th>random translation</th>
+<th>mean f1 score</th>
+<th>uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>0.700</td>
+<td>0.006</td>
+</tr>
+<tr>
+<td>yes</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>0.713</td>
+<td>0.006</td>
+</tr>
+<tr>
+<td>yes</td>
+<td>54º</td>
+<td>-</td>
+<td>-</td>
+<td>0.705</td>
+<td>0.010</td>
+</tr>
+<tr>
+<td>yes</td>
+<td>30º</td>
+<td>-</td>
+<td>-</td>
+<td>0.717</td>
+<td>0.004</td>
+</tr>
+<tr>
+<td>yes</td>
+<td>30º</td>
+<td>yes</td>
+<td>-</td>
+<td>0.702</td>
+<td>0.009</td>
+</tr>
+<tr>
+<td>yes</td>
+<td>30º</td>
+<td>-</td>
+<td>yes</td>
+<td>0.691</td>
+<td>0.009</td>
+</tr>
+</tbody>
+</table>
+<p>The best data augmentation configuration appears to be to use random flips and random rotations. In
+some cases the differences are not significative but that configuration is the one that gets the higher
+mean f1 score.</p>
+<h3 id="133-dropout">1.3.3 Dropout</h3>
+<table>
+<thead>
+<tr>
+<th>dropout</th>
+<th>mean f1 score</th>
+<th>uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.701</td>
+<td>0.013</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>0.71</td>
+<td>0.009</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>0.706</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.709</td>
+<td>0.013</td>
+</tr>
+</tbody>
+</table>
+<p>The table above shows that there is too much uncertainty on the experiments. I repeated the
+baseline from the best configuration of data augmentation with much worse results as it is shown
+in the row with no dropout.</p>
+<p>There are no significative differences between all the experiments with dropout. Thus I won't be using it.</p>
+<h3 id="134-class-balance">1.3.4 Class balance</h3>
+<p>On this experiments I have set the average of the f1 score to macro because it has been said on discord.
+Thus I have repeated the baseline results with the macro average.</p>
+<p>Since the 3 categories are unbalanced I'm going to create a generator to balance them and see how
+that affects to the validation score.</p>
+<table>
+<thead>
+<tr>
+<th>experiment</th>
+<th>mean f1 score</th>
+<th>uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unbalanced dataset</td>
+<td>0.709</td>
+<td>0.008</td>
+</tr>
+<tr>
+<td>balanced generator</td>
+<td>0.710</td>
+<td>0.007</td>
+</tr>
+</tbody>
+</table>
+<p>There is no statistically significant difference between the two experiments. For simplicity I will
+be training on the unbalanced dataset.</p>
+<p>Also there was no big difference with previous experiments that were not using f1 macro average.</p>
+<h2 id="14-summary">1.4 Summary</h2>
+<p>We have tuned the training configuration for fine-tuning ResNet50 model in the challenge's data.</p>
+<h2 id="15-next-steps">1.5 Next steps</h2>
+<p>Extend the fine-tuning to other architectures.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-11-13
+      2022-11-19
     
   </small>
 </div>
@@ -682,13 +1034,13 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
       
       
         
-        <a href="../nn_Iteration_n/" class="md-footer__link md-footer__link--next" aria-label="Next: Iteration n. Iteration_title" rel="next">
+        <a href="../02_Iteration_2/" class="md-footer__link md-footer__link--next" aria-label="Next: Iteration 2. Fine-tune multiple models" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Iteration n. Iteration_title
+              Iteration 2. Fine-tune multiple models
             </div>
           </div>
           <div class="md-footer__button md-icon">
