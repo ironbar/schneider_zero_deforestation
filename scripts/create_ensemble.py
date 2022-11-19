@@ -63,6 +63,7 @@ def create_ensemble(val_preds, val_labels, val_scores, test_preds, best_n_models
     val_ensemble = ensemble_predictions(val_preds, weights)
     print(f'{best_n_models} models Val ensemble score:{f1_score(val_labels, val_ensemble, average="macro"):4f}')
     test_ensemble = ensemble_predictions(test_preds, weights)
+    print(f'Test categories distribution: {np.unique(test_ensemble, return_counts=True)}')
     return test_ensemble
 
 
