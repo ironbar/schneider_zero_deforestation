@@ -32,6 +32,7 @@ def main(args=None):
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=False)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=True)
     print(f'Finished training for {args.architecture}')
+    save_model_and_predictions(args.output_dir, model, val_data[0], x_test)
 
 
 def get_backbone(architecture: str) -> Tuple[Model, Callable, int]:
@@ -128,9 +129,19 @@ def finetune_model(model: Model, base_model: Model,
         keras.callbacks.EarlyStopping(monitor='val_f1_score', mode='max', patience=20, restore_best_weights=True),
         keras.callbacks.ReduceLROnPlateau(monitor='val_loss', patience=3, factor=0.8),
     ]
-    model.fit(*train_data, validation_data=val_data, epochs=10, batch_size=64, callbacks=callbacks)
+    model.fit(*train_data, validation_data=val_data, epochs=100, batch_size=64, callbacks=callbacks)
     print('\nBest validation score:')
     model.evaluate(*val_data)
+
+
+def save_model_and_predictions(output_dir: str, model: Model, x_val: np.ndarray, x_test: np.ndarray):
+    print('Saving model and predictions...')
+    os.makedirs(output_dir, exist_ok=True)
+    model.save(os.path.join(output_dir, 'model.h5'))
+    np.savetxt(os.path.join(output_dir, 'test_preds.csv'), model.predict(x_test),
+               delimiter=',', fmt='%.6e')
+    np.savetxt(os.path.join(output_dir, 'val_preds.csv'), model.predict(x_val),
+               delimiter=',', fmt='%.6e')
 
 
 def parse_args(args):
@@ -146,6 +157,8 @@ def parse_args(args):
         description=description,
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         epilog=epilog)
+    parser.add_argument('output_dir', help='Path to the output folder',
+                        default='models/ResNet50')
     parser.add_argument('--data_path', help='Path to folder with the data',
                         default='/mnt/hdd0/Kaggle/schneider_deforestation/data')
     parser.add_argument('--architecture', help='Name of the model architecture to use',

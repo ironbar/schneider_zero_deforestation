@@ -12,6 +12,11 @@ architectures so we can later create an ensemble.
 
 ## 2.2 Development
 
+Keras provides multiple pretrained models along with a function to preprocess the images. I can
+extend the code that I had for ResNet50 to work with other architectures with minimal changes.
+
+[All keras pretrained models](https://keras.io/api/applications/)
+
 ## 2.3 Results
 
 ## 2.4 Summary
