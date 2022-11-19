@@ -30,15 +30,30 @@ def main(args=None):
     model, base_model = create_model(backbone)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=False)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=True)
+    print(f'Finished training for {args.architecture}')
 
 
 def get_backbone_and_preprocess_data_function(architecture):
     if architecture == 'ResNet50':
         from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
         return ResNet50, preprocess_input
+    elif architecture == 'Xception':
+        from tensorflow.keras.applications.xception import Xception, preprocess_input
+        return Xception, preprocess_input
+    elif architecture == 'ResNet50V2':
+        from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
+        return ResNet50V2, preprocess_input
+    elif architecture == 'MobileNetV2':
+        from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
+        return MobileNetV2, preprocess_input
+    elif architecture == 'EfficientNetV2B0':
+        from tensorflow.keras.applications.efficientnet_v2 import EfficientNetV2B0, preprocess_input
+        return EfficientNetV2B0, preprocess_input
+    elif architecture == 'EfficientNetV2B3':
+        from tensorflow.keras.applications.efficientnet_v2 import EfficientNetV2B3, preprocess_input
+        return EfficientNetV2B3, preprocess_input
     else:
         raise NotImplementedError(f'{architecture} architecture is not implemented')
-
 
 
 def load_data(data_path, preprocess_input):
@@ -116,7 +131,10 @@ def parse_args(args):
     epilog = """
     """
     description = """
-    Fine-tune ResNet50 for schneider deforestation challenge
+    Fine-tune keras pretrained model for schneider deforestation challenge
+
+    Available architectures:
+    ResNet50, Xception, ResNet50V2, MobileNetV2, EfficientNetV2B0, EfficientNetV2B3
     """
     parser = argparse.ArgumentParser(
         description=description,
