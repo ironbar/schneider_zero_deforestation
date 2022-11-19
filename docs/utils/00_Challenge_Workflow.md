@@ -11,7 +11,7 @@
 6. Create a conda environment for the challenge and add it to jupyter
 
 ```bash
-conda create -n barbol pytest rope pylint tqdm numpy pandas scikit-learn ipython ipykernel coverage ipywidgets matplotlib
+conda create -n barbol pytest rope pylint tqdm numpy pandas scikit-learn ipython ipykernel coverage ipywidgets matplotlib python=3.10
 conda activate barbol
 python -m ipykernel install --user --name $CONDA_DEFAULT_ENV --display-name "Python ($CONDA_DEFAULT_ENV)"
 make env-export
