@@ -1,10 +1,12 @@
 """
 Train Logistic Regression model on top of openclip embeddings
+
+https://github.com/mlfoundations/open_clip
 """
 import os
 import sys
 import argparse
-from typing import Tuple, Callable, List
+from typing import Tuple
 import pandas as pd
 from tqdm import tqdm
 import numpy as np
