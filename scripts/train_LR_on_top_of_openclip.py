@@ -34,15 +34,14 @@ def load_data(data_path: str, model_name: str, pretrained: str):
     train_df = _load_dataframe(data_path, 'train.csv')
     test_df = _load_dataframe(data_path, 'test.csv')
     x_test = compute_openclip_features(model_name, pretrained, test_df.example_path)
-
-
     x_train, x_val, y_train, y_val = train_test_split(
         compute_openclip_features(model_name, pretrained, train_df.example_path),
         train_df.label, test_size=0.2, random_state=7, stratify=train_df.label)
     return (x_train, y_train), (x_val, y_val), x_test
 
 
-def compute_openclip_features(model_name, pretrained, img_filepaths):
+def compute_openclip_features(model_name: str, pretrained: str, img_filepaths: Tuple[str]
+                              ) -> np.ndarray:
     model, _, preprocess = open_clip.create_model_and_transforms(model_name=model_name, pretrained=pretrained)
     features = []
     for img_filepath in tqdm(img_filepaths):
@@ -60,7 +59,8 @@ def _load_dataframe(data_path: str, filename: str) -> pd.DataFrame:
     return df
 
 
-def find_best_logistic_regression_model(train_data, val_data) -> LogisticRegression:
+def find_best_logistic_regression_model(train_data: Tuple[np.ndarray], val_data: Tuple[np.ndarray]
+                                        ) -> LogisticRegression:
     models, val_scores = [], []
     for regularization in np.logspace(0, 2, 40):
         model = LogisticRegression(penalty='l2', max_iter=1000, C=regularization)
@@ -73,11 +73,12 @@ def find_best_logistic_regression_model(train_data, val_data) -> LogisticRegress
     return model
 
 
-def _get_model_f1_score(model, data):
+def _get_model_f1_score(model: LogisticRegression, data: Tuple[np.ndarray]) -> float:
     return f1_score(data[1], model.predict(data[0]), average="macro")
 
 
-def save_model_and_predictions(output_dir: str, model: LogisticRegression, x_val: np.ndarray, x_test: np.ndarray):
+def save_model_and_predictions(output_dir: str, model: LogisticRegression,
+                               x_val: np.ndarray, x_test: np.ndarray):
     print('Saving model and predictions...')
     os.makedirs(output_dir, exist_ok=True)
     joblib.dump(model, os.path.join(output_dir, 'model.joblib'))
@@ -92,6 +93,7 @@ def parse_args(args):
     python scripts/train_LR_on_top_of_openclip.py --model_name ViT-B-32-quickgelu --pretrained laion400m_e32
     """
     description = """
+    Train Logistic Regression model on top of openclip embeddings
     """
     parser = argparse.ArgumentParser(
         description=description,
