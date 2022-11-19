@@ -1,4 +1,4 @@
-# Iteration 1. Keras pretrained models
+# Iteration 1. Fine-tune ResNet50 pretrained on Imagenet
 
 <!---
 The work is done using short iterations. Each iteration needs to have a very
@@ -7,7 +7,7 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
 
 ## 1.1 Goal
 
-The goal of this Iteration is to fine-tune Keras pretrained models. Those models were trained on Imagenet.
+The goal of this Iteration is to fine-tune a ResNet50 Keras pretrained model that was trained on Imagenet.
 
 ## 1.2 Development
 
@@ -63,14 +63,14 @@ keep it simple and use the original images.
 
 ### 1.3.2 Data augmentation
 
-| random flip | random rotation | random contrast | random traslation | mean f1 score | uncertainty |
-|-------------|-----------------|-----------------|-------------------|---------------|-------------|
-| -           | -               | -               | -                 | 0.700         | 0.006       |
-| yes         | -               | -               | -                 | 0.713         | 0.006       |
-| yes         | 54º             | -               | -                 | 0.705         | 0.010       |
-| yes         | 30º             | -               | -                 | 0.717         | 0.004       |
-| yes         | 30º             | yes             | -                 | 0.702         | 0.009       |
-| yes         | 30º             | -               | yes               | 0.691         | 0.009       |
+| random flip | random rotation | random contrast | random translation | mean f1 score | uncertainty |
+|-------------|-----------------|-----------------|--------------------|---------------|-------------|
+| -           | -               | -               | -                  | 0.700         | 0.006       |
+| yes         | -               | -               | -                  | 0.713         | 0.006       |
+| yes         | 54º             | -               | -                  | 0.705         | 0.010       |
+| yes         | 30º             | -               | -                  | 0.717         | 0.004       |
+| yes         | 30º             | yes             | -                  | 0.702         | 0.009       |
+| yes         | 30º             | -               | yes                | 0.691         | 0.009       |
 
 The best data augmentation configuration appears to be to use random flips and random rotations. In
 some cases the differences are not significative but that configuration is the one that gets the higher
@@ -109,4 +109,10 @@ be training on the unbalanced dataset.
 
 Also there was no big difference with previous experiments that were not using f1 macro average.
 
-## 1.4 Next steps
+## 1.4 Summary
+
+We have tuned the training configuration for fine-tuning ResNet50 model in the challenge's data.
+
+## 1.5 Next steps
+
+Extend the fine-tuning to other architectures.
