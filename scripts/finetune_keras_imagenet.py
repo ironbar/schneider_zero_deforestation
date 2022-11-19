@@ -137,7 +137,7 @@ def finetune_model(model: Model, base_model: Model,
 def save_model_and_predictions(output_dir: str, model: Model, x_val: np.ndarray, x_test: np.ndarray):
     print('Saving model and predictions...')
     os.makedirs(output_dir, exist_ok=True)
-    model.save(os.path.join(output_dir, 'model.h5'))
+    model.save(os.path.join(output_dir, 'model.h5'), include_optimizer=False)
     np.savetxt(os.path.join(output_dir, 'test_preds.csv'), model.predict(x_test),
                delimiter=',', fmt='%.6e')
     np.savetxt(os.path.join(output_dir, 'val_preds.csv'), model.predict(x_val),
