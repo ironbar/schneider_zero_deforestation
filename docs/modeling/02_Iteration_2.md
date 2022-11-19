@@ -19,6 +19,15 @@ extend the code that I had for ResNet50 to work with other architectures with mi
 
 ## 2.3 Results
 
+| Architectures    | val f1 score | uncertainty |
+|------------------|--------------|-------------|
+| ResNet50         | 0.7169       | 0.0124      |
+| MobileNetV2      | 0.6954       | 0.0197      |
+| Xception         | 0.7019       | 0.0147      |
+| ResNet50V2       | 0.7185       | 0.0251      |
+| EfficientNetV2B0 | 0.6894       | 0.0164      |
+| EfficientNetV2B3 | 0.6913       | 0.0036      |
+
 ## 2.4 Summary
 
 ## 2.5 Next steps
