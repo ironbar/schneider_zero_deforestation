@@ -1,4 +1,4 @@
-# Iteration 1. Practice with UC Merced Land Use Dataset
+# Iteration 1. Keras pretrained models
 
 <!---
 The work is done using short iterations. Each iteration needs to have a very
@@ -7,24 +7,11 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
 
 ## 1.1 Goal
 
-The goal of this Iteration is to practice with the different pretrained models on UC Merced which is
-similar in size to the challenge dataset.
+The goal of this Iteration is to fine-tune Keras pretrained models. Those models were trained on Imagenet.
 
 ## 1.2 Development
 
-### 1.2.1 UC Merced Land Use Dataset
-
-This dataset has 2100 satellite images from 21 categories (each category has 100 images) with a size of 256x256.
-The compressed dataset weights around 300MB so it is very similar to the high level description of
-the challenge dataset that has been given prior to the date of the challenge.
-
-![uc_merced_dataset](res/uc_merced_dataset.png)
-
-### 1.2.2 Keras pretrained models
-
-I will start with Keras that should be the easier implementation.
-
-#### 1.2.2.1 Install tensorflow with pip
+### 1.2.1 Install tensorflow with pip
 
 [https://www.tensorflow.org/install/pip](https://www.tensorflow.org/install/pip)
 
@@ -37,13 +24,26 @@ python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU')
 
 I had to delete and create the environment from zero because tensorflow is not ready
 for python 3.11. Also I had to downgrade tensorflow from `2.11` to `2.10` because
-GPU was not working.
+GPU was not working. Then I had to downgrade again to `2.8.3` because of this [bug](https://github.com/tensorflow/tensorflow/issues/56242)
 
-#### 1.2.2.2 Install other dependencies
+### 1.2.2 Install other dependencies
 
 ```bash
 pip install opencv-python
+pip install tensorflow-addons
 ```
+
+### ResNet50 train script
+
+I have the following questions regarding the fine-tuning strategy:
+
+- Does contrast increase improve the results?
+- Dropout
+- Data augmentation
+- Class balance
+
+The best way to answer them is to create an script and run multiple experiments for each option. That
+way we could have mean value and uncertainty for each option.
 
 ## 1.3 Results
 
