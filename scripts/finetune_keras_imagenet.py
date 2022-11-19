@@ -69,19 +69,16 @@ def _preprocess_inputs(imgs):
 def create_model(n_categories=3, img_side=224):
     img_augmentation = Sequential(
         [
-            #keras.layers.RandomRotation(factor=0.15),
-            #keras.layers.RandomTranslation(height_factor=0.1, width_factor=0.1),
+            keras.layers.RandomRotation(factor=0.08),
             keras.layers.RandomFlip(),
-            #keras.layers.RandomContrast(factor=0.1),
         ],
         name="img_augmentation",
     )
     inputs = keras.layers.Input(shape=(img_side, img_side, 3))
-    x = img_augmentation(inputs)
     base_model = ResNet50(weights='imagenet', include_top=False)
-    outputs = base_model(x, training=False)
+    outputs = img_augmentation(inputs)
+    outputs = base_model(outputs, training=False)
     outputs = GlobalAveragePooling2D()(outputs)
-    #outputs = Dense(1024, activation='relu')(outputs)
     outputs = Dense(n_categories, activation='softmax')(outputs)
     model = Model(inputs=inputs, outputs=outputs)
     return model, base_model
@@ -96,23 +93,14 @@ def finetune_model(model, base_model, train_data, val_data, finetune_backbone, n
         print('\tFine-tuning only the top layers')
         optimizer = 'Adam'
     model.compile(optimizer=optimizer, loss='categorical_crossentropy',
-                  metrics=[F1Score(n_categories), 'categorical_accuracy'])
+                  metrics=[F1Score(n_categories, average='macro'), 'categorical_accuracy'])
     callbacks = [
-        EarlyStopping(monitor='val_f1_score', mode='max', patience=20, restore_best_weights=True),
+        keras.callbacks.EarlyStopping(monitor='val_f1_score', mode='max', patience=20, restore_best_weights=True),
         keras.callbacks.ReduceLROnPlateau(monitor='val_loss', patience=3, factor=0.8),
     ]
     model.fit(*train_data, validation_data=val_data, epochs=100, batch_size=128, callbacks=callbacks)
     print('\nBest validation score:')
     model.evaluate(*val_data)
-
-
-class EarlyStopping(keras.callbacks.EarlyStopping):
-    def get_monitor_value(self, logs):
-        logs = logs or {}
-        monitor_value = logs.get(self.monitor)
-        if monitor_value is None:
-            raise ValueError(f'Early stopping requires {self.monitor} available!')
-        return np.mean(monitor_value)
 
 
 def parse_args(args):
