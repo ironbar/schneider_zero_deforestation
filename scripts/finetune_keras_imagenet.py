@@ -1,5 +1,5 @@
 """
-Finetune ResNet50 for schneider deforestation challenge
+Finetune keras pretrained models on Imagenet for schneider deforestation challenge
 
 https://keras.io/api/applications/
 https://keras.io/api/applications/resnet/#resnet50-function
@@ -8,6 +8,7 @@ https://keras.io/examples/vision/image_classification_efficientnet_fine_tuning/
 import os
 import sys
 import argparse
+from typing import Tuple, Callable, List
 import pandas as pd
 from tqdm import tqdm
 import numpy as np
@@ -25,42 +26,42 @@ def main(args=None):
     if args is None:
         args = sys.argv[1:]
     args = parse_args(args)
-    backbone, preprocess_data = get_backbone_and_preprocess_data_function(args.architecture)
-    train_data, val_data, x_test, ohe = load_data(args.data_path, preprocess_data)
-    model, base_model = create_model(backbone)
+    backbone, preprocess_data, img_side = get_backbone(args.architecture)
+    train_data, val_data, x_test = load_data(args.data_path, preprocess_data, img_side)
+    model, base_model = create_model(backbone, img_side=img_side)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=False)
     finetune_model(model, base_model, train_data, val_data, finetune_backbone=True)
     print(f'Finished training for {args.architecture}')
 
 
-def get_backbone_and_preprocess_data_function(architecture):
+def get_backbone(architecture: str) -> Tuple[Model, Callable, int]:
     if architecture == 'ResNet50':
         from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
-        return ResNet50, preprocess_input
+        return ResNet50, preprocess_input, 224
     elif architecture == 'Xception':
         from tensorflow.keras.applications.xception import Xception, preprocess_input
-        return Xception, preprocess_input
+        return Xception, preprocess_input, 299
     elif architecture == 'ResNet50V2':
         from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
-        return ResNet50V2, preprocess_input
+        return ResNet50V2, preprocess_input, 224
     elif architecture == 'MobileNetV2':
         from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
-        return MobileNetV2, preprocess_input
+        return MobileNetV2, preprocess_input, 224
     elif architecture == 'EfficientNetV2B0':
         from tensorflow.keras.applications.efficientnet_v2 import EfficientNetV2B0, preprocess_input
-        return EfficientNetV2B0, preprocess_input
+        return EfficientNetV2B0, preprocess_input, 224
     elif architecture == 'EfficientNetV2B3':
         from tensorflow.keras.applications.efficientnet_v2 import EfficientNetV2B3, preprocess_input
-        return EfficientNetV2B3, preprocess_input
+        return EfficientNetV2B3, preprocess_input, 300
     else:
         raise NotImplementedError(f'{architecture} architecture is not implemented')
 
 
-def load_data(data_path, preprocess_input):
+def load_data(data_path: str, preprocess_input: Callable, img_side: int):
     train_df = _load_dataframe(data_path, 'train.csv')
     test_df = _load_dataframe(data_path, 'test.csv')
-    train_imgs = _load_imgs(train_df.example_path)
-    test_imgs = _load_imgs(test_df.example_path)
+    train_imgs = _load_imgs(train_df.example_path, img_side)
+    test_imgs = _load_imgs(test_df.example_path, img_side)
     inputs = _preprocess_inputs(train_imgs, preprocess_input)
     x_test = _preprocess_inputs(test_imgs, preprocess_input)
 
@@ -69,28 +70,31 @@ def load_data(data_path, preprocess_input):
 
     x_train, x_val, y_train, y_val = train_test_split(
         inputs, ohe_labels, test_size=0.2, random_state=7, stratify=train_df.label)
+    print(f'Train samples for each category: {np.sum(y_train, axis=0)}')
+    print(f'Val samples for each category: {np.sum(y_val, axis=0)}')
 
-    return (x_train, y_train), (x_val, y_val), x_test, ohe
+    return (x_train, y_train), (x_val, y_val), x_test
 
 
-def _load_dataframe(data_path, filename):
+def _load_dataframe(data_path: str, filename: str) -> pd.DataFrame:
     df = pd.read_csv(os.path.join(data_path, filename))
     df.example_path = df.example_path.apply(lambda x: os.path.join(data_path, x))
     return df
 
 
-def _load_imgs(image_filepaths, img_side=224):
+def _load_imgs(image_filepaths: List[str], img_side: int = 224):
     imgs = [image.load_img(image_filepath, target_size=(img_side, img_side))
             for image_filepath in tqdm(image_filepaths)]
     return imgs
 
-def _preprocess_inputs(imgs, preprocess_input):
+
+def _preprocess_inputs(imgs: List[np.ndarray], preprocess_input: Callable) -> np.ndarray:
     inputs = np.array([preprocess_input(image.img_to_array(img)) for img in tqdm(imgs)],
                        dtype=np.float32)
     return inputs
 
 
-def create_model(backbone, n_categories=3, img_side=224):
+def create_model(backbone: Model, n_categories: int = 3, img_side: int = 224) -> Model:
     img_augmentation = Sequential(
         [
             keras.layers.RandomRotation(factor=0.08),
@@ -108,7 +112,9 @@ def create_model(backbone, n_categories=3, img_side=224):
     return model, base_model
 
 
-def finetune_model(model, base_model, train_data, val_data, finetune_backbone, n_categories=3):
+def finetune_model(model: Model, base_model: Model,
+                   train_data: Tuple[np.ndarray], val_data: Tuple[np.ndarray],
+                   finetune_backbone: bool, n_categories: int = 3):
     base_model.trainable = finetune_backbone
     if finetune_backbone:
         print('\tFine-tuning the whole model')
@@ -122,7 +128,7 @@ def finetune_model(model, base_model, train_data, val_data, finetune_backbone, n
         keras.callbacks.EarlyStopping(monitor='val_f1_score', mode='max', patience=20, restore_best_weights=True),
         keras.callbacks.ReduceLROnPlateau(monitor='val_loss', patience=3, factor=0.8),
     ]
-    model.fit(*train_data, validation_data=val_data, epochs=100, batch_size=128, callbacks=callbacks)
+    model.fit(*train_data, validation_data=val_data, epochs=10, batch_size=64, callbacks=callbacks)
     print('\nBest validation score:')
     model.evaluate(*val_data)
 
