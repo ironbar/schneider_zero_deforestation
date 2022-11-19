@@ -32,6 +32,8 @@ the characteristics of the metric --->
 > - the quality of your code
 > - the quality of the explanation of the solution you provide.
 
+![challenge_evaluation_code_quality](res/challenge_evaluation_code_quality.png)
+
 So we have to train a precise model, but at the same time we have to make clean code and nice documentation.
 
 > The winning teams will be determined by a combination of hard skills and soft skills correction.  
